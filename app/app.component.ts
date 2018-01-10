@@ -18,6 +18,8 @@ import { Component } from '@angular/core';
         Seach for... {{name}}
       </div>
     </div>
+    <hr />
+    <app-passengers></app-passengers>
   `
 })
 export class AppComponent {

@@ -25,7 +25,7 @@ module.exports = {
     publicPath: '/build/',
     quiet: true,
     historyApiFallback: true,
-    setup: function (app) {
+    before: function(app) {
       app.use('/api', jsonServer.router('db.json'));
     },
     stats: {
@@ -35,12 +35,7 @@ module.exports = {
   },
   devtool: 'sourcemap',
   entry: {
-    app: [
-      'reflect-metadata',
-      'ts-helpers',
-      'zone.js',
-      'main'
-    ]
+    app: ['reflect-metadata', 'ts-helpers', 'zone.js', 'main']
   },
   output: {
     chunkFilename: '[name].chunk.js',
@@ -61,9 +56,7 @@ module.exports = {
             loader: 'angular2-template-loader'
           }
         ],
-        include: [
-          path.resolve(cwd, 'app')
-        ]
+        include: [path.resolve(cwd, 'app')]
       },
       {
         test: /\.html/,
@@ -100,7 +93,16 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new ProgressBarPlugin({
-      format: chalk.magenta.bold('build') + ' [' + chalk.green(':bar')+ '] ' + chalk.green.bold(':percent') + ' ' + chalk.yellow.bold(':elapsed seconds') + ' ' + chalk.white(':msg'),
+      format:
+        chalk.magenta.bold('build') +
+        ' [' +
+        chalk.green(':bar') +
+        '] ' +
+        chalk.green.bold(':percent') +
+        ' ' +
+        chalk.yellow.bold(':elapsed seconds') +
+        ' ' +
+        chalk.white(':msg'),
       clear: false
     }),
     new ts.TsConfigPathsPlugin(),

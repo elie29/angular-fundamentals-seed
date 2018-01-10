@@ -29,7 +29,7 @@ export class PassengersComponent {
   handleEdit(event: Passenger) {
     this.passengers = this.passengers.map(passenger => {
       if (passenger.id === event.id) {
-        // Immutable operation
+        // Immutable operation by merging data
         return Object.assign({}, passenger, event);
       }
       return passenger;

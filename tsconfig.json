@@ -6,8 +6,9 @@
     "noEmitHelpers": true,
     "pretty": true,
     "sourceMap": true,
-    "lib": ["es5", "dom"],
-    "strictNullChecks": false
+    "lib": ["es5", "es6", "dom"],
+    "strictNullChecks": false,
+    "moduleResolution": "Node"
   },
   "exclude": [
     "node_modules"

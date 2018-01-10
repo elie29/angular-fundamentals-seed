@@ -1,4 +1,4 @@
-import { Passenger } from '../models/passenger.service';
+import { Passenger } from '../models/passenger.interface';
 
 export class PassengersService {
   passengers: Passenger[] = [

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Passenger } from '../../models/passenger.service';
+import { Passenger } from '../../models/passenger.interface';
 import { PassengersService } from '../../services/passengers.service';
 
 @Component({

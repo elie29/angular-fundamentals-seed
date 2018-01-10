@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
       <ng-template [ngIf]="name.length > 2">
         <div>Seach for... {{name}}</div>
       </ng-template>
+      <!-- star replaces the template tag -->
       <div *ngIf="name.length > 2">
         Seach for... {{name}}
       </div>
@@ -20,7 +21,7 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  name: string = '';
+  name = '';
   handleButton(value: string): void {
     this.name = value;
   }

@@ -8,20 +8,14 @@ import { PassengersService } from '../../services/passengers.service';
   styleUrls: ['passengers.component.scss'],
   template: `
   <div class="app">
-    <passenger-count></passenger-count>
-    <passenger-detail></passenger-detail>
-    <h3>Airline Passengers</h3>
-    <ul>
-      <li *ngFor="let passenger of passengers">
-        <span class="status"
-          [class.checked-in]="passenger.checkedIn">
-        </span>
-        {{ passenger.fullname }} - {{ passenger.checkInDate | date:'d MMMM y' | lowercase }}
-        <div class="children">
-        Children : {{ passenger.children?.length || 0 }}
-        </div>
-      </li>
-    </ul>
+    <passenger-count [items]="passengers">
+    </passenger-count>
+    <passenger-detail
+      *ngFor="let passenger of passengers"
+      [detail]="passenger"
+      (edit)="handleEdit($event)"
+      (remove)="handleRemove($event)">
+    </passenger-detail>
   </div>
   `
 })
@@ -30,5 +24,22 @@ export class PassengersComponent {
 
   constructor(private service: PassengersService) {
     this.passengers = service.passengers;
+  }
+
+  handleEdit(event: Passenger) {
+    this.passengers = this.passengers.map(passenger => {
+      if (passenger.id === event.id) {
+        // Immutable operation
+        return Object.assign({}, passenger, event);
+      }
+      return passenger;
+    });
+  }
+
+  handleRemove(event: Passenger) {
+    // With immutable, angular will propagate changes
+    this.passengers = this.passengers.filter(
+      passenger => passenger.id !== event.id
+    );
   }
 }

@@ -43,13 +43,17 @@ export class PassengerDetailComponent {
 
   editing: boolean = false;
 
+  private fullname = '';
+
   onNameChange(value: string) {
-    this.detail.fullname = value;
+    this.fullname = value;
   }
 
   toggleEdit() {
-    if (this.editing) {
-      this.edit.emit(this.detail);
+    const fullname = this.fullname.trim();
+    if (this.editing && fullname) {
+      // Immutable change
+      this.edit.emit({ ...this.detail, fullname });
     }
     this.editing = !this.editing;
   }

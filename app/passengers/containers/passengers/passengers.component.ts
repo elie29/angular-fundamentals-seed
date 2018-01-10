@@ -8,6 +8,7 @@ import { PassengersService } from '../../services/passengers.service';
   styleUrls: ['passengers.component.scss'],
   template: `
   <div class="app">
+    <div *ngFor="let p of passengers">{{p.fullname}}</div>
     <passenger-count [items]="passengers">
     </passenger-count>
     <passenger-detail

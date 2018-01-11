@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { delay } from 'rxjs/operators/delay';
@@ -12,9 +12,26 @@ export class PassengerDashboardService {
   constructor(private http: HttpClient) {}
 
   getPassengers(): Observable<Passenger[]> {
-    return this.http.get(PASSENGER_API).pipe(delay(2000)) as Observable<
-      Passenger[]
-    >;
+    // using a simple object
+    // ---------------------
+    // const headers = { 'x-token': 'myToken123456', 'x-valid': '52489' };
+
+    // using HttpHeaders
+    // -----------------
+    // const headers = new HttpHeaders({
+    //   'x-token': 'myToken0000111',
+    //   'x-valid': '25487'
+    // });
+
+    // using immutable HttpHeaders
+    // ---------------------------
+    const headers = new HttpHeaders()
+      .set('x-token', 'myToken555111')
+      .set('x-valid', '125897');
+
+    return this.http
+      .get(PASSENGER_API, { headers })
+      .pipe(delay(2000)) as Observable<Passenger[]>;
   }
 
   updatePassenger(passenger: Passenger): Observable<Passenger> {

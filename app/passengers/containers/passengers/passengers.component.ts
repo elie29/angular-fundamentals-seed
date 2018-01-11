@@ -20,12 +20,13 @@ import { PassengerDashboardService } from '../../services/passenger-dashboard.se
   `
 })
 export class PassengersComponent implements OnInit {
-  passengers: Passenger[];
+  passengers: Passenger[] = [];
 
   constructor(private service: PassengerDashboardService) {}
 
   ngOnInit(): void {
-    this.passengers = this.service.getPassengers();
+    this.service.getPassengers()
+      .subscribe(items => (this.passengers = items));
   }
 
   handleEdit(event: Passenger) {

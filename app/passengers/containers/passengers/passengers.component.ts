@@ -29,19 +29,23 @@ export class PassengersComponent implements OnInit {
   }
 
   handleEdit(event: Passenger) {
-    this.passengers = this.passengers.map(passenger => {
-      if (passenger.id === event.id) {
-        // Immutable operation by merging data
-        return Object.assign({}, passenger, event);
-      }
-      return passenger;
+    this.service.updatePassenger(event).subscribe(data => {
+      this.passengers = this.passengers.map(passenger => {
+        if (passenger.id === data.id) {
+          // Immutable operation by merging data
+          return Object.assign({}, passenger, data);
+        }
+        return passenger;
+      });
     });
   }
 
   handleRemove(event: Passenger) {
-    // With immutable, angular will propagate changes
-    this.passengers = this.passengers.filter(
-      passenger => passenger.id !== event.id
-    );
+    this.service.removePassenger(event).subscribe(data => {
+      // With immutable, angular will propagate changes
+      this.passengers = this.passengers.filter(
+        passenger => passenger.id !== event.id
+      );
+    });
   }
 }

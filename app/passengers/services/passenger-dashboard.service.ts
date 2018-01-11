@@ -29,8 +29,9 @@ export class PassengerDashboardService {
       .set('x-token', 'myToken555111')
       .set('x-valid', '125897');
 
+    // withCredentials to send cookie for cross-site Access-Control requests. This never affects same-site requests.
     return this.http
-      .get(PASSENGER_API, { headers })
+      .get(PASSENGER_API, { headers, withCredentials: false })
       .pipe(delay(2000)) as Observable<Passenger[]>;
   }
 

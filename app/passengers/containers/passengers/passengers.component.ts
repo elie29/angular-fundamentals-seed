@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Passenger } from '../../models/passenger.interface';
-import { PassengersService } from '../../services/passengers.service';
+import { PassengerDashboardService } from '../../services/passenger-dashboard.service';
 
 @Component({
   selector: 'app-passengers',
@@ -19,11 +19,13 @@ import { PassengersService } from '../../services/passengers.service';
   </div>
   `
 })
-export class PassengersComponent {
+export class PassengersComponent implements OnInit {
   passengers: Passenger[];
 
-  constructor(private service: PassengersService) {
-    this.passengers = service.passengers;
+  constructor(private service: PassengerDashboardService) {}
+
+  ngOnInit(): void {
+    this.passengers = this.service.getPassengers();
   }
 
   handleEdit(event: Passenger) {

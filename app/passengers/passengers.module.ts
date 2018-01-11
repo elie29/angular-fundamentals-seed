@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { PassengerCountComponent } from './components/passenger-count/passenger-count.component';
 import { PassengerDetailComponent } from './components/passenger-detail/passenger-detail.component';
 import { PassengersComponent } from './containers/passengers/passengers.component';
-import { PassengersService } from './services/passengers.service';
+import { PassengerDashboardService } from './services/passenger-dashboard.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,6 @@ import { PassengersService } from './services/passengers.service';
   imports: [CommonModule],
   // we export only the container not children
   exports: [PassengersComponent],
-  providers: [PassengersService]
+  providers: [PassengerDashboardService]
 })
 export class PassengersModule {}

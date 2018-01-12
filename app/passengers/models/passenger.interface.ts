@@ -11,3 +11,8 @@ export interface Child {
   name: string;
   age: number;
 }
+
+export interface Baggage {
+  key: string;
+  value: string;
+}

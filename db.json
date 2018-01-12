@@ -6,7 +6,7 @@
       "checkedIn": true,
       "checkInDate": 1234567890000,
       "children": null,
-      "baggage": ""
+      "baggage": "none"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
         { "name": "Stephen", "age": 12 },
         { "name": "John", "age": 5 }
       ],
-      "baggage": ""
+      "baggage": "none"
     },
     {
       "id": 3,
@@ -24,7 +24,7 @@
       "checkedIn": true,
       "checkInDate": 1234567890000,
       "children": null,
-      "baggage": ""
+      "baggage": "none"
     },
     {
       "id": 4,
@@ -32,14 +32,14 @@
       "checkedIn": true,
       "checkInDate": 1234567890000,
       "children": [{ "name": "Tracy", "age": 15 }],
-      "baggage": ""
+      "baggage": "none"
     },
     {
       "id": 5,
       "fullname": "Tina",
       "checkedIn": false,
       "children": null,
-      "baggage": ""
+      "baggage": "none"
     }
   ]
 }

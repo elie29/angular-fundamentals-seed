@@ -31,6 +31,9 @@ import { Passenger } from '../../models/passenger.interface';
       <button (click)="onRemove()">
         Remove
       </button>
+      <button (click)="onView()">
+        View
+      </button>
     </div>
   `
 })
@@ -40,6 +43,8 @@ export class PassengerDetailComponent {
   @Output() edit: EventEmitter<Passenger> = new EventEmitter();
 
   @Output() remove: EventEmitter<Passenger> = new EventEmitter();
+
+  @Output() view: EventEmitter<Passenger> = new EventEmitter();
 
   editing: boolean = false;
 
@@ -60,5 +65,9 @@ export class PassengerDetailComponent {
 
   onRemove() {
     this.remove.emit(this.detail);
+  }
+
+  onView() {
+    this.view.emit(this.detail);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators/switchMap';
 
 import { Passenger } from '../../models/passenger.interface';
@@ -10,6 +10,7 @@ import { PassengerDashboardService } from '../../services/passenger-dashboard.se
   styleUrls: ['passenger-viewer.component.scss'],
   template: `
   <div>
+    <button type="button" (click)="goBack()">&lsaquo; Go back</button>
     <passenger-form
       [detail]="passenger"
       (update)="handleUpdate($event)"
@@ -23,7 +24,8 @@ export class PassengerViewerComponent implements OnInit {
 
   constructor(
     private service: PassengerDashboardService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,5 +38,9 @@ export class PassengerViewerComponent implements OnInit {
     this.service
       .updatePassenger(passenger)
       .subscribe(data => (this.passenger = { ...passenger }));
+  }
+
+  goBack(): void {
+    this.router.navigate(['/passengers']);
   }
 }

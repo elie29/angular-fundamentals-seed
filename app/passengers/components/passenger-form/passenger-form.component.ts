@@ -60,8 +60,9 @@ import { Baggage, Passenger } from '../../models/passenger.interface';
             {{ item.value }}</option>
         </select>
       </div>
-
-      <button type="submit" [disabled]="form.invalid">Update passenger</button>
+      <div>
+        <button type="submit" [disabled]="form.invalid">Update passenger</button>
+      </div>
     </form>
   `
 })

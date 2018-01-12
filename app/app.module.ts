@@ -11,8 +11,7 @@ import { PassengerViewerComponent } from './passengers/containers/passenger-view
 import { PassengersModule } from './passengers/passengers.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'dashboard', component: PassengerDashboardComponent },
   { path: 'viewer', component: PassengerViewerComponent },
   { path: '**', component: NotFoundComponent }

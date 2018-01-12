@@ -7,7 +7,6 @@ import { Passenger, Baggage } from '../../models/passenger.interface';
   styleUrls: ['passenger-form.component.scss'],
   template: `
     <form #form="ngForm">
-      {{ detail | json }}
       <div>
         Passenger Name: <input
           type="text"
@@ -61,10 +60,7 @@ import { Passenger, Baggage } from '../../models/passenger.interface';
         </select>
       </div>
 
-      <pre>{{ form.value | json }}</pre>
-      <pre>{{ form.status }}</pre>
-      <pre>Touched: {{ form.touched }}</pre>
-      <pre>Dirty: {{ form.dirty }}</pre>
+      <button type="submit" [disabled]="form.invalid">Update passenger</button>
     </form>
   `
 })

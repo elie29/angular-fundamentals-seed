@@ -4,8 +4,8 @@ import { Passenger } from '../../models/passenger.interface';
 import { PassengerDashboardService } from '../../services/passenger-dashboard.service';
 
 @Component({
-  selector: 'app-passengers',
-  styleUrls: ['passengers.component.scss'],
+  selector: 'passenger-dashboard',
+  styleUrls: ['Passenger-dashboard.component.scss'],
   template: `
   <div class="app">
     <passenger-count [items]="passengers">
@@ -19,7 +19,7 @@ import { PassengerDashboardService } from '../../services/passenger-dashboard.se
   </div>
   `
 })
-export class PassengersComponent implements OnInit {
+export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
 
   constructor(private service: PassengerDashboardService) {}

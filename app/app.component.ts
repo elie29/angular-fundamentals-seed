@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
       </div>
     </div>
     <hr />
-    <app-passengers></app-passengers>
+    <passenger-viewer></passenger-viewer>
   `
 })
 export class AppComponent {

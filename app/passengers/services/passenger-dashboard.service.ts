@@ -35,6 +35,10 @@ export class PassengerDashboardService {
       .pipe(delay(2000)) as Observable<Passenger[]>;
   }
 
+  getPassenger(id: number): Observable<Passenger> {
+    return this.http.get(`${PASSENGER_API}/${id}`) as Observable<Passenger>;
+  }
+
   updatePassenger(passenger: Passenger): Observable<Passenger> {
     return this.http.put(
       `${PASSENGER_API}/${passenger.id}`,

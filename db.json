@@ -4,17 +4,23 @@
       "id": 1,
       "fullname": "Stephen",
       "checkedIn": true,
+      "baggage": "none",
       "checkInDate": 1234567890000,
-      "children": null,
-      "baggage": "none"
+      "children": null
     },
     {
       "id": 2,
       "fullname": "Rose",
       "checkedIn": false,
       "children": [
-        { "name": "Stephen", "age": 12 },
-        { "name": "John", "age": 5 }
+        {
+          "name": "Stephen",
+          "age": 12
+        },
+        {
+          "name": "John",
+          "age": 5
+        }
       ],
       "baggage": "none"
     },
@@ -31,7 +37,12 @@
       "fullname": "Louise",
       "checkedIn": true,
       "checkInDate": 1234567890000,
-      "children": [{ "name": "Tracy", "age": 15 }],
+      "children": [
+        {
+          "name": "Tracy",
+          "age": 15
+        }
+      ],
       "baggage": "none"
     },
     {

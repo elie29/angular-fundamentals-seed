@@ -10,7 +10,9 @@ import { Passenger } from '../../models/passenger.interface';
   template: `
   <div>
     <passenger-form
-      [detail]="passenger">
+      [detail]="passenger"
+      (update)="handleUpdate($event)"
+    >
     </passenger-form>
   </div>
   `
@@ -22,5 +24,11 @@ export class PassengerViewerComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getPassenger(1).subscribe(data => (this.passenger = data));
+  }
+
+  handleUpdate(passenger: Passenger) {
+    this.service
+      .updatePassenger(passenger)
+      .subscribe(data => (this.passenger = { ...passenger }));
   }
 }

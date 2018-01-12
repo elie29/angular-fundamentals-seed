@@ -1,12 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { Passenger, Baggage } from '../../models/passenger.interface';
+import { Baggage, Passenger } from '../../models/passenger.interface';
 
 @Component({
   selector: 'passenger-form',
   styleUrls: ['passenger-form.component.scss'],
   template: `
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <div>
         Passenger Name: <input
           type="text"
@@ -66,6 +67,7 @@ import { Passenger, Baggage } from '../../models/passenger.interface';
 })
 export class PassengerFormComponent {
   @Input() detail: Passenger;
+  @Output() update: EventEmitter<Passenger> = new EventEmitter();
 
   baggage: Baggage[] = [
     { key: 'none', value: 'No baggage' },
@@ -77,6 +79,13 @@ export class PassengerFormComponent {
   toggleCheckIn(checkedIn: boolean): void {
     if (checkedIn) {
       this.detail.checkInDate = Date.now();
+    }
+  }
+
+  onSubmit(form: NgForm): void {
+    if (form.valid) {
+      const passenger = { ...this.detail, ...form.value };
+      this.update.emit(passenger);
     }
   }
 }

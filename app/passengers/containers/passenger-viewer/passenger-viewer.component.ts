@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators/switchMap';
 
-import { PassengerDashboardService } from '../../services/passenger-dashboard.service';
 import { Passenger } from '../../models/passenger.interface';
+import { PassengerDashboardService } from '../../services/passenger-dashboard.service';
 
 @Component({
   selector: 'passenger-viewer',
@@ -20,10 +21,15 @@ import { Passenger } from '../../models/passenger.interface';
 export class PassengerViewerComponent implements OnInit {
   passenger: Passenger;
 
-  constructor(private service: PassengerDashboardService) {}
+  constructor(
+    private service: PassengerDashboardService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.service.getPassenger(1).subscribe(data => (this.passenger = data));
+    this.route.params
+      .pipe(switchMap(params => this.service.getPassenger(params.id)))
+      .subscribe(data => (this.passenger = data));
   }
 
   handleUpdate(passenger: Passenger) {

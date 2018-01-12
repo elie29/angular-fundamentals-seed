@@ -6,14 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './not-found.component';
-import { PassengerDashboardComponent } from './passengers/containers/passenger-dashboard/passengers-dashboardcomponent';
-import { PassengerViewerComponent } from './passengers/containers/passenger-viewer/passenger-viewer.component';
 import { PassengersModule } from './passengers/passengers.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'dashboard', component: PassengerDashboardComponent },
-  { path: 'viewer', component: PassengerViewerComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

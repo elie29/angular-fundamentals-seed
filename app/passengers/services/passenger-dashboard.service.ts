@@ -32,7 +32,7 @@ export class PassengerDashboardService {
     // withCredentials to send cookie for cross-site Access-Control requests. This never affects same-site requests.
     return this.http
       .get(PASSENGER_API, { headers, withCredentials: false })
-      .pipe(delay(2000)) as Observable<Passenger[]>;
+      .pipe(delay(100)) as Observable<Passenger[]>;
   }
 
   getPassenger(id: number): Observable<Passenger> {

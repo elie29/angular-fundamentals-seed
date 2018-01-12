@@ -18,8 +18,8 @@ import { PassengerDashboardService } from './services/passenger-dashboard.servic
     PassengerViewerComponent
   ],
   imports: [CommonModule, FormsModule],
-  // we export only the container not children
-  exports: [PassengerViewerComponent],
+  // we export only the containers not components children
+  exports: [PassengerDashboardComponent, PassengerViewerComponent],
   providers: [PassengerDashboardService]
 })
 export class PassengersModule {}

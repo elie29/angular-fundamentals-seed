@@ -9,7 +9,7 @@ import { NotFoundComponent } from './not-found.component';
 import { PassengersModule } from './passengers/passengers.module';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
 
